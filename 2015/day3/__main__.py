@@ -85,25 +85,25 @@ class Santa:
     def __str__(self):
         return f"{"Ro ro r" if self.opposite else "Ho ho h"}o! I'm at location {self.location}!\nI have given at least 1 present to {len(self.location_history)} houses!"
 
+if __name__ == "__main__":
+    file = sys.argv[1]
+    with open(file, mode="r", encoding="utf-8") as file:
+        for line in file:
+            print("----")
+            current_santa = Santa()
+            current_robo_santa = Santa()
+            instruct_set = []
 
-file = sys.argv[1]
-with open(file, mode="r", encoding="utf-8") as file:
-    for line in file:
-        print("----")
-        current_santa = Santa()
-        current_robo_santa = Santa()
-        instruct_set = []
+            strip = line.strip()
+            instruct_set = parse_instructions(strip)
 
-        strip = line.strip()
-        instruct_set = parse_instructions(strip)
-
-        for i, instruct in enumerate(instruct_set):
-            if i % 2 == 0:
-                current_robo_santa.move(instruct)
-            else:
-                current_santa.move(instruct)
-        print(current_santa)
-        print(current_robo_santa)
-        
-        location_history_both = current_santa.location_history.union(current_robo_santa.location_history)
-        print(f"Altogether, the unique amount is {len(location_history_both)}")
+            for i, instruct in enumerate(instruct_set):
+                if i % 2 == 0:
+                    current_robo_santa.move(instruct)
+                else:
+                    current_santa.move(instruct)
+            print(current_santa)
+            print(current_robo_santa)
+            
+            location_history_both = current_santa.location_history.union(current_robo_santa.location_history)
+            print(f"Altogether, the unique amount is {len(location_history_both)}")

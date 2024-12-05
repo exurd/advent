@@ -42,14 +42,14 @@ def nice(string:str):
     print(f"Sandwich: {check_sandwich(string)}")
     return (check_allowed(string) and check_sandwich(string))
 
-
-nice_strings = 0
-file = sys.argv[1]
-with open(file, mode="r", encoding="utf-8") as file:
-    for line in file:
-        strip = line.strip()
-        print(strip)
-        if nice(strip):
-            nice_strings += 1
-        print("-----")
-print(f"Nice strings: {nice_strings}") # wrong: 158, 52
+if __name__ == "__main__":
+    nice_strings = 0
+    file = sys.argv[1]
+    with open(file, mode="r", encoding="utf-8") as file:
+        for line in file:
+            strip = line.strip()
+            print(strip)
+            if nice(strip):
+                nice_strings += 1
+            print("-----")
+    print(f"Nice strings: {nice_strings}") # wrong: 158, 52

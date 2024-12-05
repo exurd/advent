@@ -102,36 +102,37 @@ class LightSet():
                 light.switch(power)
         # light.toggle()
 
-file = sys.argv[1]
-LightSet = LightSet(1000,1000)
+if __name__ == "__main__":
+    file = sys.argv[1]
+    LightSet = LightSet(1000,1000)
 
-with open(file, mode="r", encoding="utf-8") as file:
-    for line in file:
-        strip = line.strip()
-        # print(strip)
-        parse = express.search(strip)
+    with open(file, mode="r", encoding="utf-8") as file:
+        for line in file:
+            strip = line.strip()
+            # print(strip)
+            parse = express.search(strip)
 
-        instruction = parse.group(1)
-        start_x = int(parse.group(2))
-        start_y = int(parse.group(3))
-        end_x = int(parse.group(4))
-        end_y = int(parse.group(5))
+            instruction = parse.group(1)
+            start_x = int(parse.group(2))
+            start_y = int(parse.group(3))
+            end_x = int(parse.group(4))
+            end_y = int(parse.group(5))
 
-        power = None
-        if instruction == "turn on":
-            power = Power.ON
-        elif instruction == "turn off":
-            power = Power.OFF
+            power = None
+            if instruction == "turn on":
+                power = Power.ON
+            elif instruction == "turn off":
+                power = Power.OFF
 
-        if power is None:  # should be a toggle
-            LightSet.toggle_lights(start_x,start_y, end_x,end_y)
-        else:
-            LightSet.switch_lights(power, start_x,start_y, end_x,end_y)
+            if power is None:  # should be a toggle
+                LightSet.toggle_lights(start_x,start_y, end_x,end_y)
+            else:
+                LightSet.switch_lights(power, start_x,start_y, end_x,end_y)
 
-        # print(parse.group(5))
+            # print(parse.group(5))
 
-        # print("-----")
-print(LightSet)
+            # print("-----")
+    print(LightSet)
 
 
 # light = Light()

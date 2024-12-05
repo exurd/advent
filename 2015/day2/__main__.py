@@ -45,16 +45,16 @@ def calculate_amount_of_ribbon(l, w, h):
 
     return (ribbon_length + cubic_meter)
 
+if __name__ == "__main__":
+    total_paper = 0
+    total_ribbon = 0
+    file = sys.argv[1]
+    with open(file, mode="r", encoding="utf-8") as file:
+        for line in file:
+            split = line.strip().split("x")
 
-total_paper = 0
-total_ribbon = 0
-file = sys.argv[1]
-with open(file, mode="r", encoding="utf-8") as file:
-    for line in file:
-        split = line.strip().split("x")
+            total_paper += calculate_amount_of_paper(int(split[0]), int(split[1]), int(split[2]))
+            total_ribbon += calculate_amount_of_ribbon(int(split[0]), int(split[1]), int(split[2]))
 
-        total_paper += calculate_amount_of_paper(int(split[0]), int(split[1]), int(split[2]))
-        total_ribbon += calculate_amount_of_ribbon(int(split[0]), int(split[1]), int(split[2]))
-
-print(f"Total Amount of Paper: {total_paper}")
-print(f"Total Amount of Ribbon: {total_ribbon}")
+    print(f"Total Amount of Paper: {total_paper}")
+    print(f"Total Amount of Ribbon: {total_ribbon}")

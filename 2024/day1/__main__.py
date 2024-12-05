@@ -119,11 +119,11 @@ def calculate_similarity_scores(list_one, list_two):
             break
     return similar_score
 
+if __name__ == "__main__":
+    file = sys.argv[1]
+    list_one, list_two = split_nums_from_(file)
+    difference = calculate_differences(list_one, list_two)
+    print(f"Difference: {difference}")
 
-file = sys.argv[1]
-list_one, list_two = split_nums_from_(file)
-difference = calculate_differences(list_one, list_two)
-print(f"Difference: {difference}")
-
-similar_score = calculate_similarity_scores(list_one, list_two)
-print(f"Similarity Score: {similar_score}")
+    similar_score = calculate_similarity_scores(list_one, list_two)
+    print(f"Similarity Score: {similar_score}")
