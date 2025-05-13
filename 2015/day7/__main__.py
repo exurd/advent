@@ -1,5 +1,5 @@
 """
-Day 7: Some Assembly Required (Part 1)
+Day 7: Some Assembly Required (Part Two, i guess?)
 """
 import sys
 import re
@@ -234,6 +234,8 @@ def parse(instructions):
         a.append(i)
     return a
 
+# Tue May 13 17:34:02 BST 2025: is part two as simple as replacing b in the input.txt file?
+# Tue May 13 17:34:42 BST 2025: it was... goddammit
 
 instructions = []
 if __name__ == "__main__":
