@@ -9,11 +9,14 @@ import subprocess
 import sys
 import os
 
+# https://stackoverflow.com/a/715455
+YES_STRINGS = ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly', 'uh-huh']
+
 try:
     year = sys.argv[1]
     day = sys.argv[2]
     try:
-        example = sys.argv[3].lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly', 'uh-huh']  # https://stackoverflow.com/a/7154
+        example = sys.argv[3].lower() in YES_STRINGS
     except:
         example = False
 
